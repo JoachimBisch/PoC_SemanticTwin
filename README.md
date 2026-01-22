@@ -6,12 +6,28 @@ This Proof of Concept (PoC) is a SaaS Backend engine designed to probe Large Lan
 
 ## 🚀 Features
 
+- **Multi-Company Analysis** ✨ NEW: Analyze any company with `--company` flag
 - **Deterministic Probing**: Enforces strict parameters for reproducible results.
 - **Modular Architecture**: Core engine separated from pluggable probe modules.
 - **Vector Analysis**: Extraction and comparison of embeddings using Cosine Similarity.
 - **Logit Analysis**: Analysis of model confidence and token probabilities.
 - **Visual Reporting**: Generates interactive HTML dashboards (Plotly) for audit results.
 - **Resilience**: Robust error handling and API retry mechanisms.
+
+## 🎯 Quick Start (NEW - Multi-Company Support)
+
+```bash
+# Analyze Philip Morris International
+python semantic_twin_engine/main.py
+
+# Analyze TotalEnergies
+python semantic_twin_engine/main.py --company TE
+
+# See full usage
+python semantic_twin_engine/main.py --help
+```
+
+**See [QUICKSTART.md](QUICKSTART.md) for detailed examples and how to add new companies!**
 
 ## 📋 Prerequisites
 

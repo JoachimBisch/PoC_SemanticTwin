@@ -6,8 +6,10 @@ It initializes the configuration, registers probes, and executes
 the audit pipeline with visualization.
 """
 
+import argparse
 import json
 import logging
+import os
 import sys
 import webbrowser
 from datetime import datetime
@@ -121,6 +123,22 @@ def main() -> int:
     Returns:
         Exit code (0 for success, 1 for failure).
     """
+    # Setup argument parser for company selection
+    parser = argparse.ArgumentParser(
+        description="Semantic Twin Engine - Multi-Company Semantic Analysis"
+    )
+    parser.add_argument(
+        "--company",
+        type=str,
+        default=os.getenv("SEMANTIC_TWIN_COMPANY", "PMI"),
+        help="Company to analyze (PMI, TE, etc.). Defaults to SEMANTIC_TWIN_COMPANY env var or PMI.",
+    )
+    args = parser.parse_args()
+
+    # Set environment variable if company is specified
+    if args.company:
+        os.environ["SEMANTIC_TWIN_COMPANY"] = args.company
+
     # Setup
     setup_logging()
     logger = logging.getLogger(__name__)
